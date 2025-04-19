@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "functions": {
-    "api/realtime/index.ts": {
-      "runtime": "edge@1"
-    }
-  },
   "routes": [
-    { "src": "/api/realtime", "dest": "/api/realtime/index.ts" }
+    { "src": "/api/realtime", "dest": "/api/realtime.js" }
   ]
 } 
