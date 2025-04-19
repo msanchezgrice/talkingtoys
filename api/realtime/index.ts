@@ -4,9 +4,10 @@ export const config = {
 };
 
 export default async function handler(req) {
-  // Non-WebSocket requests get a helpful message
-  if (!req.headers.get('upgrade')?.includes('websocket')) {
-    return new Response('WebSocket endpoint for OpenAI audio streaming', { 
+  // Check if it's a WebSocket upgrade request
+  const upgradeHeader = req.headers.get('upgrade');
+  if (upgradeHeader !== 'websocket') {
+    return new Response('This is a WebSocket endpoint for the Talking Objects API', { 
       status: 200,
       headers: {
         'Content-Type': 'text/plain'
@@ -14,10 +15,12 @@ export default async function handler(req) {
     });
   }
 
-  // Forward to a mock endpoint for now since we can't use Deno directly
-  // In real implementation, you'll need to use Edge-compatible WebSocket libraries
-  // or configure Vercel to allow Deno features
-  return new Response("This would be a WebSocket connection to OpenAI", {
-    status: 200
+  // Since we're using Edge runtime without direct WebSocket support in a simple way,
+  // just return a message explaining the endpoint
+  return new Response('WebSocket connection would be established here in a full implementation', {
+    status: 400,
+    headers: {
+      'Content-Type': 'text/plain'
+    }
   });
 }
