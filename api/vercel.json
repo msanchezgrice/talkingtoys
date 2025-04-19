@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/realtime", "dest": "/api/realtime/index.ts" }
+  ]
+} 

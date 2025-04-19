@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "functions": {
+    "api/realtime/index.ts": { 
+      "runtime": "edge@latest"
+    }
+  },
+  "routes": [
+    { "src": "/api/realtime", "dest": "/api/realtime/index.ts" }
+  ]
+}
